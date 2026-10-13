@@ -1,0 +1,12 @@
+---
+import PageView from '../components/PageView.astro';
+import { pages, type Page } from '../data/pages';
+
+export function getStaticPaths() {
+  return pages.map((page) => ({ params: { path: page.path }, props: { page } }));
+}
+
+interface Props { page: Page }
+const { page } = Astro.props;
+---
+<PageView page={page} />
